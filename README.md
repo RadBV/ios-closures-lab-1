@@ -25,6 +25,16 @@ Hello Closures!
 Hello Closures!
 ```
 
+```swift
+func applyKTimes(_ k:Int, _ closure: () -> ()) {
+    for _ in 0..<k {
+        closure()
+    }
+}
+
+applyKTimes(3, {print("Hello Closures!")})
+```
+
 
 ## Question 2
 
@@ -37,6 +47,11 @@ Input: `let numbers = [1, 2, 3, 4, 6, 8, 9, 3, 12, 11]`
 
 Expected values: `multiples = [3, 6, 9, 3, 12]`
 
+```swift
+let multiples = numbers.filter({a in return a % 3 == 0})
+print(multiples)
+```
+
 
 ## Question 3
 
@@ -46,6 +61,11 @@ Example:
 Input: `let numbers = [4, 7, 1, 9, 6, 5, 6, 9]`
 
 Output: `9`
+
+```swift
+let largestNumber = numbers.reduce(0, {x, y in return x > y ? x : y})
+print(largestNumber)
+```
 
 
 ## Question 4
@@ -57,6 +77,10 @@ Input: `let strings = ["We", "Heart", "Swift"]`
 
 Output: `"We Heart Swift"`
 
+```swift
+let stringReduced = strings.reduce("", { $0 + " " + $1})
+print(stringReduced)
+```
 
 ## Question 5
 
@@ -68,6 +92,17 @@ b. Use `sortedBy` to sort `cities` alphabetical order of the second character of
 
 c. Use `sortedBy` to sort `cities` in order of the length of the city name.
 
+```swift
+//a
+let citiesAlphabetical = cities.sorted(by: <)
+print(citiesAlphabetical
+//b
+let citiesAlphabetical2 = cities.sorted(by: { $0.dropFirst() < $1.dropFirst()})
+print(citiesAlphabetical2)
+//c
+let citiesBiggestLength = cities.sorted(by: { (a, b) -> Bool in return a.count < b.count })
+print(citiesBiggestLength)
+```
 
 ## Question 6
 
@@ -75,8 +110,16 @@ c. Use `sortedBy` to sort `cities` in order of the length of the city name.
 
 a. Use `sortedBy` to sort `citiesWithPopulation` in ascending order of population.
 
-b. Use `sortedBy` to sort `citiesWithPopulation` in reverse alphabetical order of the last character in the city name.
+```swift
+let cwpAscending = citiesWithPopulation.sorted() { $0.1 < $1.1}
+print(cwpAscending)
+```
 
+b. Use `sortedBy` to sort `citiesWithPopulation` in reverse alphabetical order of the last character in the city name.
+```swift
+let cwpReverseAlphabeticalLast = citiesWithPopulation.sorted() {$0.0.last! > $1.0.last!}
+print(cwpReverseAlphabeticalLast)
+```
 
 ## Question 7
 
