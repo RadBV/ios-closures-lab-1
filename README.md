@@ -141,7 +141,26 @@ numbers = [1, 2, 3, 5, 4, 6]
 
 // [1, 5, 2, 3, 4, 6] would also have been a valid solution
 ```
+```
+var divisors: [Int] = []
+var divisorsForREal: [Int] = []
 
+func countDivisors(array: [Int]) {
+    for i in array {
+        for divisor in 1...i {  
+            if i % divisor == 0 {
+                divisors.append(divisor)
+            }
+        }
+        divisorsForREal.append(divisors.count)
+        divisors.removeAll()
+    }
+}
+countDivisors(array: numbers)
+
+let sortedArrayOfDivisors = divisorsForREal.sorted()
+print(sortedArrayOfDivisors)
+```
 
 ## Question 8
 
